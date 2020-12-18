@@ -10,7 +10,9 @@ Using the sample sample log file, perform the following tasks:
 6. Option parsing to produce only the report for one of the previous points (e.g. only the top 10 urls, only the percentage of successful requests and so on)
 7. A README file explaining how to use the tool, what its dependencies and any assumptions you made while writing it
 
-Extra points will be given for:8. Tests9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
+Extra points will be given for:
+8. Tests
+9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
 
 
 Log file url: ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz
