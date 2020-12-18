@@ -14,4 +14,5 @@ Extra points will be given for:
 8. Tests
 9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
 
+
 Log file url: ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz
