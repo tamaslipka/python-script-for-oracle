@@ -23,5 +23,7 @@ Using the sample log file, perform the following tasks:
 7. A README file explaining how to use the tool, what its dependencies and any assumptions you made while writing it
 
 Extra points will be given for:
+
 8. Tests
+
 9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
