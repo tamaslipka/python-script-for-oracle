@@ -13,7 +13,6 @@ Extract and copy NASA_access_log_Aug95 file into the python project folder
 
 Start Log-analyzer-script.py and choose from the following options:
 
-Using the sample log file, perform the following tasks:
 1. Top 10 requested pages and the number of requests made for each
 2. Percentage of successful requests (anything in the 200s and 300s range)
 3. Percentage of unsuccessful requests (anything that is not in the 200s or 300s range)
