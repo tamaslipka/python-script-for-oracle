@@ -27,11 +27,6 @@ with open("access_log_Aug95") as infile:
         #5st
         top_domains.update({columns[0]: top_domains.get(columns[0], 0) + 1})
 
-#print("Basic information about the log: ")
-#print("This is the number of the lines in the log: ",line_count)
-#print("This is the number of the success request: ",request_success_count)
-#print("This is the number of the error request: ",request_error_count)
-
 #1st
 def task1():
     print("Top 10 requested pages and the number of requests made for each: ")
@@ -67,6 +62,8 @@ def task6():
 
 def task7():
     print("Print README file (explaining how to use the tool, what its dependencies and any assumptions you made while writing it) :")
+    file = open("README.md", "r")
+    print(file.read())
 
 def task8():
     print("Test - out of order :")
