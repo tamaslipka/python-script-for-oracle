@@ -2,9 +2,13 @@
 HTTP log file parsing
 
 This tool can analyze the following exact log file: access_log_Aug95
+
 The log file is reachable on the following url: ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz
+
 Preconditions:
+
 Python 2.7.17 min. required
+
 Extract and copy NASA_access_log_Aug95 file into the python project folder
 
 Start Log-analyzer-script.py and choose from the following options:
