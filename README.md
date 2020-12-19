@@ -24,5 +24,5 @@ Start Log-analyzer-script.py and choose from the following options:
 Extra points will be given for:
 
 8. Tests
-
+   
 9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
