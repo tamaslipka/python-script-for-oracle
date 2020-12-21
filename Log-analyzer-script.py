@@ -20,12 +20,12 @@ with open("access_log_Aug95") as infile:
         top_pages.update({columns[0] + columns[6]: top_pages.get(columns[0] + columns[6], 0) + 1})
         #2nd-3rd
         response_code = int(columns[columns_count-2])
-        if response_code >= 200 and response_code < 300:
+        if response_code >= 200 and response_code < 400:
             request_success_count = request_success_count + 1
         else:
             request_error_count = request_error_count + 1
         #4th
-        if response_code >= 300:
+        if response_code >= 400:
             error_domains.update({columns[0]: error_domains.get(columns[0], 0) + 1})
         #5st
         top_domains.update({columns[0]: top_domains.get(columns[0], 0) + 1})
@@ -109,6 +109,7 @@ while ans:
     1. Top 10 requested pages and the number of requests made for each
     2. Percentage of successful requests (anything in the 200s and 300s range)
     3. Percentage of unsuccessful requests (anything that is not in the 200s or 300s range)
+    4. Top 10 unsuccessful page requests
     5. The top 10 hosts making the most requests, displaying the IP address and number of requests made
     6. Option parsing to produce only the report for one of the previous points (e.g. only the top 10 urls, only the percentage of successful requests and so on)
     7. Print README file
