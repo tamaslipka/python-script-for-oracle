@@ -9,6 +9,7 @@ request_error_count = 0
 top_pages = {}
 top_domains = {}
 error_domains = {}
+top_pages_sum = {}
 
 with open("access_log_Aug95") as infile:
     for line in infile:
@@ -16,7 +17,6 @@ with open("access_log_Aug95") as infile:
         columns_count = len(columns)
         line_count = line_count + 1
         # 1st
-        #top_pages.update({columns[6]: top_pages.get(columns[6], 6) + 1})
         top_pages.update({columns[0] + columns[6]: top_pages.get(columns[0] + columns[6], 0) + 1})
         #2nd-3rd
         response_code = int(columns[columns_count-2])
@@ -29,6 +29,9 @@ with open("access_log_Aug95") as infile:
             error_domains.update({columns[0]: error_domains.get(columns[0], 0) + 1})
         #5st
         top_domains.update({columns[0]: top_domains.get(columns[0], 0) + 1})
+        #6th
+        top_pages_sum.update({columns[6]: top_pages_sum.get(columns[6], 0) + 1})
+
 
 #1st
 def task1():
@@ -37,6 +40,13 @@ def task1():
     most_common = counted.most_common(10)
     for k, v in counted.most_common(10):
         print(k, v)
+
+def task1_1():
+    print("Top 10 requested pages: ")
+    counted = Counter(top_pages_sum)
+    most_common = counted.most_common(10)
+    for k, v in counted.most_common(10):
+        print(k)
 
 #2nd
 def task2():
@@ -53,6 +63,11 @@ def task4():
     for k, v in Counter(error_domains).most_common(10):
         print(k, v)
 
+def task4_4():
+    print("Top 10 unsuccessful page requests :")
+    for k, v in Counter(error_domains).most_common(10):
+        print(k)
+
 #5th
 def task5():
     print("The top 10 hosts making the most requests, displaying the IP address and number of requests made :")
@@ -67,6 +82,10 @@ def task5():
 
 def task6():
     print("Option parsing to produce only the report for one of the previous points (e.g. only the top 10 urls, only the percentage of successful requests and so on) :")
+    task1_1()
+    task2()
+    task3()
+    task4_4()
 
 def task7():
     print("Print README file:")
@@ -92,7 +111,7 @@ while ans:
     3. Percentage of unsuccessful requests (anything that is not in the 200s or 300s range)
     5. The top 10 hosts making the most requests, displaying the IP address and number of requests made
     6. Option parsing to produce only the report for one of the previous points (e.g. only the top 10 urls, only the percentage of successful requests and so on)
-    7. Print README file (explaining how to use the tool, what its dependencies and any assumptions you made while writing it)
+    7. Print README file
     8. Test (out of order)
     9. For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each
     10. Exit/Quit
