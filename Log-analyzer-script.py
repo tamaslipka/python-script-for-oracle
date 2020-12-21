@@ -1,7 +1,9 @@
+import socket
 from collections import Counter
 from pip._vendor.distlib.compat import raw_input
 
 line_count = 0
+columns_count = 0
 request_success_count = 0
 request_error_count = 0
 top_pages = {}
@@ -11,14 +13,14 @@ error_domains = {}
 with open("access_log_Aug95") as infile:
     for line in infile:
         columns = line.split()
-        cloumns_count = len(columns)
+        columns_count = len(columns)
         line_count = line_count + 1
         # 1st
         top_pages.update({columns[6]: top_pages.get(columns[6], 6) + 1})
         #2nd-3rd
-        response_code = int(columns[cloumns_count-2])
+        response_code = int(columns[columns_count-2])
         if response_code >= 200 and response_code < 300:
-            request_success_count = request_success_count +1
+            request_success_count = request_success_count + 1
         else:
             request_error_count = request_error_count + 1
         #4th
@@ -37,11 +39,12 @@ def task1():
 
 #2nd
 def task2():
-    print("Percentage of successful requests (anything in the 200s and 300s range): ", request_success_count/line_count*100,"%")
+    rsc = (request_success_count / line_count) * 100
+    print("Percentage of successful requests (anything in the 200s and 300s range): ", '{0:.2f}%'.format(rsc))
 
 #3rd
 def task3():
-    print("Percentage of unsuccessful requests (anything that is not in the 200s or 300s range): ", request_error_count/line_count*100,"%")
+    print("Percentage of unsuccessful requests (anything that is not in the 200s or 300s range): "'{0:.2f}%'.format((request_error_count / line_count) * 100))
 
 #4th
 def task4():
@@ -55,13 +58,17 @@ def task5():
     counted = Counter(top_domains)
     most_common = counted.most_common(10)
     for k, v in counted.most_common(10):
-        print(k, v, columns[3])
+        print(k, v)
+        try:
+            print(socket.gethostbyname(k))
+        except:
+            print("No ip for ",k)
 
 def task6():
     print("Option parsing to produce only the report for one of the previous points (e.g. only the top 10 urls, only the percentage of successful requests and so on) :")
 
 def task7():
-    print("Print README file (explaining how to use the tool, what its dependencies and any assumptions you made while writing it) :")
+    print("Print README file:")
     file = open("README.md", "r")
     print(file.read())
 
@@ -70,6 +77,10 @@ def task8():
 
 def task9():
     print("For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each :")
+    counted = Counter(top_domains)
+    most_common = counted.most_common(10)
+    for k, v in counted.most_common(10):
+        print(k, columns[6], v)
 
 ans=True
 while ans:
