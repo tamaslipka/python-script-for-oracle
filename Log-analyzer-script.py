@@ -16,7 +16,8 @@ with open("access_log_Aug95") as infile:
         columns_count = len(columns)
         line_count = line_count + 1
         # 1st
-        top_pages.update({columns[6]: top_pages.get(columns[6], 6) + 1})
+        #top_pages.update({columns[6]: top_pages.get(columns[6], 6) + 1})
+        top_pages.update({columns[0] + columns[6]: top_pages.get(columns[0] + columns[6], 0) + 1})
         #2nd-3rd
         response_code = int(columns[columns_count-2])
         if response_code >= 200 and response_code < 300:
@@ -77,10 +78,11 @@ def task8():
 
 def task9():
     print("For each of the top 10 hosts, show the top 5 pages requested and the number of requests for each :")
-    counted = Counter(top_domains)
-    most_common = counted.most_common(10)
-    for k, v in counted.most_common(10):
-        print(k, columns[6], v)
+    for k, v in Counter(top_domains).most_common(10):
+        print(k, v)
+        top_domain_pages = {key: value for (key, value) in top_pages.items() if key.startswith(k)}
+        for kk, vv in Counter(top_domain_pages).most_common(5):
+            print(kk, vv)
 
 ans=True
 while ans:
