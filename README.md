@@ -9,7 +9,7 @@ Preconditions:
 
 Python 2.7.17 min. required
 
-Extract and copy NASA_access_log_Aug95 file into the python project folder
+Download, extract and copy NASA_access_log_Aug95 file into the python project folder
 
 Start Log-analyzer-script.py and choose from the following options:
 
